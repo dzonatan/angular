@@ -56,7 +56,8 @@ export function setUpControl(control: FormControl, dir: NgControl): void {
     if (emitModelEvent) dir.viewToModelUpdate(newValue);
   });
 
-  if (dir.valueAccessor !.setDisabledState) {
+  if (dir.valueAccessor!.setDisabledState) {
+    dir.valueAccessor !.setDisabledState !(control.disabled);
     control.registerOnDisabledChange(
         (isDisabled: boolean) => { dir.valueAccessor !.setDisabledState !(isDisabled); });
   }
